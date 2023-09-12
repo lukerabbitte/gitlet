@@ -1,2 +1,21 @@
-// input is a file, output is a hash code summating the file name and contents
+const { createHash } = require('crypto');
 
+class Blob {
+    
+    constructor(data) {
+      this.data = data;
+      this.id = this.hash
+    }
+
+    hash(string) {
+        return createHash('sha256').update(string).digest('hex');
+    }
+
+    getContent() {
+        return this.data;
+    }
+
+    getId() {
+        return this.id;
+    }
+}
