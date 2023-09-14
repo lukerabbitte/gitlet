@@ -9,4 +9,4 @@ figuring out how to package the different moving parts of the project in JS.
 
 ## 14-09-23
 
-Adding test data to sample repo and learning how to use mocha and chai to perform unit tests of JS modules.
+Adding test data to sample repo and learning how to use mocha and chai to perform unit tests of JS modules. Inspecting initial commit in C to get a better grasp of the origins of the git tree (https://github.com/git/git).
