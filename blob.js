@@ -2,6 +2,7 @@ const { createHash } = require('crypto');
 
 class Blob {
     
+    // Properties are data, MIME type, and cryptographic ID
     constructor(data, mimeType) {
         this.data = data;
         this.mimeType = mimeType;
@@ -25,10 +26,4 @@ class Blob {
     }
 }
 
-const blobData = "This is string data.";
-const mimeType = "text/plain"; // Example MIME type for text data
-const blob = new Blob(blobData, mimeType);
-
-console.log("Blob ID:", blob.getId());
-console.log("Blob Content:", blob.getContent());
-console.log("Blob MIME Type:", blob.getMimeType());
+export default Blob;
