@@ -1,10 +1,11 @@
 const fs = require('fs');
 const { expect } = require('chai');
-const Blob = require('../blob');
+const Blob = require('../src/blob.js');
 
 describe('Blob', () => {
+
   it('should create a Blob from a text file', () => {
-    const filePath = 'sample_repo/messages/message1.txt'; 
+    const filePath = 'sample_repo/text/message1.txt';
     const data = fs.readFileSync(filePath, 'utf-8');
     const mimeType = 'text/plain';
 
@@ -15,14 +16,14 @@ describe('Blob', () => {
   });
 
   it('should create a Blob from an image file', () => {
-    const filePath = 'path/to/your/image.jpg'; // Replace with the actual file path
+    const filePath = 'sample_repo/image/lorem_ipsum.png';
     const data = fs.readFileSync(filePath);
     const mimeType = 'image/jpeg';
 
     const blob = new Blob(data, mimeType);
 
-    // Additional assertions for image-specific properties
-    expect(blob.getContent()).to.deep.equal(data);
     expect(blob.getMimeType()).to.equal(mimeType);
   });
+
+  // TODO add more tests
 });

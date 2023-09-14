@@ -6,11 +6,10 @@ class Blob {
     constructor(data, mimeType) {
         this.data = data;
         this.mimeType = mimeType;
-        this.id = this.hash(data); // Call the hash method with 'this.'
     }
 
     hash(string) {
-        return createHash('sha256').update(string).digest('hex');
+        return createHash('sha1').update(string).digest('hex');
     }
 
     getContent() {
@@ -18,10 +17,12 @@ class Blob {
     }
 
     getId() {
-        return this.id;
+        return this.hash(data);
     }
 
     getMimeType() {
         return this.mimeType;
     }
 }
+
+module.exports = Blob;
