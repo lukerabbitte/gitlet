@@ -3,34 +3,31 @@
 const fs = require('fs');
 const path = require('path');
 
-function initGitRepository() {
+const gitletStructure = {
+  HEAD: "ref: refs/heads/master\n",
+  objects: {},
+  refs: {
+    heads: {},  // excluding remotes and tags for the time being. Tags are just annoation linked to other object ID.
+  }
+};
 
-    var gitletStructure = {
-        HEAD: "ref: refs/heads/master\n",
-        objects: {},
-        refs: {
-          heads: {},
-        }
-    };
+const gitDirectoryPath = path.join(process.cwd(), '.gitto');
 
-    files.writeFilesFromTree(gitletStructure, process.cwd());
+if (!fs.existsSync(gitDirectoryPath)) {
+  fs.mkdirSync(gitDirectoryPath);
 }
 
-function writeFilesFromTree(tree, prefix) {
+function initGitRepository(structure, prefix) {
+  Object.keys(structure).forEach((name) => {
+      const itemPath = path.join(prefix, name);
 
-    Object.keys(tree).forEach(function(name) {
-      var path = nodePath.join(prefix, name);
-      if (util.isString(tree[name])) {
-        fs.writeFileSync(path, tree[name]);
-      } else {
-        if (!fs.existsSync(path)) {
-          fs.mkdirSync(path, `0o777`); 
-        }
-
-        files.writeFilesFromTree(tree[name], path);
+      if (typeof structure[name] === 'string') {
+        fs.writeFileSync(itemPath, structure[name]);
+      } else if (typeof structure[name] === 'object') {
+        fs.mkdirSync(itemPath);
+        initGitRepository(structure[name], itemPath); // recursive call for all subdirectories
       }
-    });
+  });
+}
 
-  }
-
-initGitRepository();
+initGitRepository(gitletStructure, gitDirectoryPath);

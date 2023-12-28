@@ -1,2 +1,13 @@
 Subject: Your Morning Brew is Ready!
 Message: Good morning! Your coffee is ready and waiting for you. The rich aroma of freshly brewed beans fills the air. Come and enjoy a delightful cup of warmth to kickstart your day. We've prepared a perfect blend just the way you like it. Grab your favorite mug and savor the magic. Have a great day ahead!
+
+
+
+
+/*
+git add text/message1.txt
+
+This should 
+
+
+*/

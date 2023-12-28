@@ -2,10 +2,8 @@ const { createHash } = require('crypto');
 
 class Blob {
     
-    // Properties are data, MIME type, and cryptographic ID
-    constructor(data, mimeType) {
+    constructor(data) {
         this.data = data;
-        this.mimeType = mimeType;
     }
 
     hash(string) {
@@ -16,12 +14,8 @@ class Blob {
         return this.data;
     }
 
-    getId() {
-        return this.hash(data);
-    }
-
-    getMimeType() {
-        return this.mimeType;
+    getHash() {
+        return this.hash(data); // data will always hash to same thing
     }
 }
 
